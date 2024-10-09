@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button 
+         defaultHref="/"
+         text=""
+         color = "dark">
+
+        </ion-back-button>
+    </ion-buttons>  
+    <ion-title>card</ion-title>
+   </ion-toolbar>
+     
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="text-align: center;">
+     <ion-button (click)="cargarPost()"  shape="round" color="warning" style="margin-top: 30px;">
+      Post
+     </ion-button>
+  </div>
+
+  <ion-card *ngFor="let p of posteos">
+    <ion-card-header>
+      <ion-card-title style="font-size: 18px;">Id:{{p.id}}</ion-card-title>
+      <ion-card-subtitle style="font-size: 18px;">Title : {{p.title}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p style="color:cornflowerblue; text-align: justify;">
+        {{p.body}}
+      </p>
+    </ion-card-content>
+      
+  </ion-card>
+
+</ion-content>

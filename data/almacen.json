@@ -1,0 +1,29 @@
+{
+  "mascotas": [
+    {
+      "id": "1",
+      "nombre": "Luna",
+      "tipo": "Perro",
+      "color": "cafe"
+    },
+    {
+      "id": "2",
+      "nombre": "Leon",
+      "tipo": "Perro",
+      "color": "blanco"
+    },
+    {
+      "id": "3",
+      "nombre": "rainman",
+      "tipo": "tortuga",
+      "color": "verde"
+    },
+    {
+      "id": "37e1",
+      "nombre": "Hakuka Matata",
+      "tipo": "tortuga",
+      "color": "rojo"
+    }
+  ],
+  "usuarios": []
+}

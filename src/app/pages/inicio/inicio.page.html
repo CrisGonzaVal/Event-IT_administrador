@@ -1,0 +1,44 @@
+3<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="end" name="menu-outline" color="dark" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+<ion-card id="foto">
+  <ion-img src="assets/mente.png"></ion-img>
+</ion-card>
+
+<div id="centrar">
+  <ion-button (click)="mensaje()" fill="solid" shape="round" class="boton">
+    Usuarios
+  </ion-button>
+</div>
+
+<!--
+
+<ion-list lines="none"> <!-lines: linea entre opciones
+  <ion-item *ngFor="let m of opciones"
+   [routerLink]="m.redirecTo" detail="true"> <!-detail: flecha
+   <ion-icon slot="start" [name]="m.icon" color="dark"></ion-icon>  <!-slot: ubicacion (start izq, end der)
+    <ion-label> {{m.name}}</ion-label>
+  </ion-item>
+</ion-list>
+
+
+ <ion-button fill="solid" shape="round" color="success" [routerLink]="['/alert']">
+    Alert
+  </ion-button>
+
+  <ion-button fill="outline" shape="round" color="primary" [routerLink]="['/card']">
+    card
+  </ion-button>
+-->
+
+</ion-content>

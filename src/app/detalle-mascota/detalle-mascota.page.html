@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start"> <!--flecha de retroceso-->
+      <ion-back-button 
+      defaultHref="/animalitos"
+      text=""
+      color = "dark">
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title>detalleMascota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Id: {{unaMascota.id}}</ion-card-subtitle>
+      <ion-card-title>Nombre: {{unaMascota.nombre}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>
+        Tipo: {{unaMascota.tipo}}<br>
+        Color: {{unaMascota.color}}
+      </p>
+    </ion-card-content>
+
+
+
+    <div style="margin-top: 30px; text-align: center;">
+      <ion-button (click)="actualizarMascota(this.unaMascota)" shape="round" color="warning">
+        Actualizar Mascota
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-content>

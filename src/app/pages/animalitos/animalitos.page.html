@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start"> <!--flecha de retroceso-->
+      <ion-back-button 
+      defaultHref="/"
+      text=""
+      color = "dark">
+      </ion-back-button>
+    </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="agregarAnimalito()">
+          <ion-icon slot="start" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+
+    <ion-title>Mascotas</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+
+    <ion-item *ngFor="let m of mascotas" (click)="buscarMascota(m)">
+      <ion-label>
+        <h3>Id Macota: {{m.id}}</h3>
+        <h4>Nombre Mascota: {{m.nombre}}</h4>
+        <h4>Color: {{m.color}}</h4>
+        <h4>Tipo: {{m.tipo}}</h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

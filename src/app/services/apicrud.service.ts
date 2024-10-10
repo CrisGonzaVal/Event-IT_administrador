@@ -20,4 +20,12 @@ export class ApicrudService {
   postMascotas(newAnimalito: IAnimalito):Observable<IAnimalito>{
     return this.httpClient.post<IAnimalito>(`${environment.apiUrl}/mascotas`, newAnimalito); //me devuelve un arreglo
   }
+
+  putMascotas(animalito:any):Observable<IAnimalitos>{
+    return this.httpClient.put<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`, animalito);
+ }
+
+ deleteMascotas(animalito:any):Observable<IAnimalitos>{
+  return this.httpClient.delete<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`);
+ }
 }

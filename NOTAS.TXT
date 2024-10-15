@@ -51,3 +51,8 @@ crear archivo Json
 istalar postman y subir la url levantado el json
 
 ionic g service services/apicrud
+
+
+>npm install angularx-qrcode --save //para instalar paquetes del generador qr
+
+>ionic g service services/auth  //servicio de autentificacion

@@ -1,44 +1,48 @@
 3<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button (click)="mostrarMenu()">
-        <ion-icon slot="end" name="menu-outline" color="dark" size="large"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Inicio</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-title>Inicio de Sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
  
-<ion-card id="foto">
-  <ion-img src="assets/mente.png"></ion-img>
-</ion-card>
+ <form [formGroup]="loginForm">
+  <ion-item>
+    <ion-input type="text" placeholder="Username" label="Ingrese nombre de Usuario: " labelPlacement="floating"
+    formControlName="username"></ion-input>
+  </ion-item>
 
-<div id="centrar">
-  <ion-button (click)="mensaje()" fill="solid" shape="round" class="boton">
-    Usuarios
-  </ion-button>
+  <ion-item>
+    <ion-input type="text" placeholder="password" label="Ingrese contraseña: " labelPlacement="floating"
+    formControlName="password"></ion-input>
+  </ion-item>
+
+  <div id="alerta" *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || 
+                  loginForm.get('username')?.touched)">
+        <div id="alerta" *ngIf="loginForm.get('username')?.hasError('required')">
+          *Username es obligatorio
+        </div>
+        <div id="alerta" *ngIf="loginForm.get('username')?.hasError('minlength')">
+          *Username debe tener mínimo 6 caracteres
+        </div>
+  </div>
+
+  <div id="alerta" *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || 
+                 loginForm.get('password')?.touched)">
+        <div id="alerta" *ngIf="loginForm.get('password')?.hasError('required')">
+          *Password es obligatoria
+        </div>
+        <div id="alerta" *ngIf="loginForm.get('password')?.hasError('minlength')">
+         *Password debe tener mínimo 8 caracteres
+        </div>
 </div>
 
-<!--
+<div style="text-align: center; margin-top:20px">
+  <ion-button (click)="login()" [disabled]="!loginForm.valid" shape="round" color="primary">
+    Iniciar Sesion
+  </ion-button> 
+</div>
 
-<ion-list lines="none"> <!-lines: linea entre opciones
-  <ion-item *ngFor="let m of opciones"
-   [routerLink]="m.redirecTo" detail="true"> <!-detail: flecha
-   <ion-icon slot="start" [name]="m.icon" color="dark"></ion-icon>  <!-slot: ubicacion (start izq, end der)
-    <ion-label> {{m.name}}</ion-label>
-  </ion-item>
-</ion-list>
-
-
- <ion-button fill="solid" shape="round" color="success" [routerLink]="['/alert']">
-    Alert
-  </ion-button>
-
-  <ion-button fill="outline" shape="round" color="primary" [routerLink]="['/card']">
-    card
-  </ion-button>
--->
-
+ </form>
+  
 </ion-content>

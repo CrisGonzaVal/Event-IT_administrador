@@ -2,28 +2,36 @@
   "mascotas": [
     {
       "id": "1",
-      "nombre": "Luna",
+      "nombre": "Princesa",
       "tipo": "Perro",
-      "color": "cafe"
+      "color": "verde"
     },
     {
       "id": "2",
       "nombre": "Leon",
       "tipo": "Perro",
-      "color": "blanco"
+      "color": "Blanco"
     },
     {
       "id": "3",
-      "nombre": "rainman",
-      "tipo": "tortuga",
+      "nombre": "Rainman",
+      "tipo": "Tortuga",
       "color": "verde"
-    },
-    {
-      "id": "37e1",
-      "nombre": "Hakuka Matata",
-      "tipo": "tortuga",
-      "color": "rojo"
     }
   ],
-  "usuarios": []
+  "usuarios":[
+    {
+     "id":"1",
+     "username":"usuario1",
+     "email":"usuario1@mail.cl",
+     "password":"duoc1234",
+     "isactive":true
+    }
+    
+    
+  ]
+    
+
+
+
 }

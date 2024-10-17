@@ -19,6 +19,10 @@ export class AuthService {
   getByUsername(usuario:any):Observable<Users>{
     return this.httpclient.get<Users>(`${environment.apiUrl}/usuarios/?username=${usuario}`);
   }
+
+  IsLoggedIn(){
+    return sessionStorage.getItem('username')!=null;
+  }
  
 
 }

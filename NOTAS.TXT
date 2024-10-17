@@ -56,3 +56,6 @@ ionic g service services/apicrud
 >npm install angularx-qrcode --save //para instalar paquetes del generador qr
 
 >ionic g service services/auth  //servicio de autentificacion
+
+>ionic g guard guards/autorizado //autorizacion a acceder a los pages
+>(*) CanActivate

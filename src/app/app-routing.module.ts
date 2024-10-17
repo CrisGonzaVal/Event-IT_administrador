@@ -1,6 +1,7 @@
 //para enrutar paginas
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AutorizadoGuard } from './guards/autorizado.guard';
 
 //arreglo de rutas page
 const routes: Routes = [
@@ -25,32 +26,32 @@ const routes: Routes = [
   //page card
   {
     path: 'card',
-    loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule)
+    loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule), canActivate:[AutorizadoGuard]
   },
   {
     path: 'contact',
-    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule), canActivate:[AutorizadoGuard]
   },
   {
     path: 'detalle',
-    loadChildren: () => import('./detalle/detalle.module').then( m => m.DetallePageModule)
+    loadChildren: () => import('./detalle/detalle.module').then( m => m.DetallePageModule), canActivate:[AutorizadoGuard] //pasa por el metodo de guard
   },
   {
     path: 'animalitos',
-    loadChildren: () => import('./pages/animalitos/animalitos.module').then( m => m.AnimalitosPageModule)
+    loadChildren: () => import('./pages/animalitos/animalitos.module').then( m => m.AnimalitosPageModule), canActivate:[AutorizadoGuard]
   },
   {
     path: 'agregar',
-    loadChildren: () => import('./agregar/agregar.module').then( m => m.AgregarPageModule)
+    loadChildren: () => import('./agregar/agregar.module').then( m => m.AgregarPageModule), canActivate:[AutorizadoGuard]
   },
   {
     path: 'detalle-mascota',
-    loadChildren: () => import('./detalle-mascota/detalle-mascota.module').then( m => m.DetalleMascotaPageModule)
+    loadChildren: () => import('./detalle-mascota/detalle-mascota.module').then( m => m.DetalleMascotaPageModule), canActivate:[AutorizadoGuard]
   },
   {
     //recibe el id del animal (actualizar, elimianr o modificar)
     path: 'actualizar/:id', 
-    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarPageModule)
+    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarPageModule), canActivate:[AutorizadoGuard]
   },
 ];
 

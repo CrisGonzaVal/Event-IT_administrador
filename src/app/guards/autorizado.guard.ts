@@ -16,13 +16,12 @@ export class AutorizadoGuard  {
               private router: Router){
   }
 
-
   canActivate():
     
     | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (!this.authservice.IsLoggedIn()){
-        this.showToast('Debe iniciar sesión..'); //manda alertas
-        this.router.navigateByUrl('/alert');
+        this.showToast('Debe iniciar sesión..');
+        this.router.navigateByUrl('/inicio');
         return false;
       }
       else{

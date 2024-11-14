@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-
-interface Opciones{
-  icon: string;
-  name: string;
-  redirecTo: string;
+interface Menu{
+  icon:string;
+  name:string;
+  redirecTo:string;
 }
 
 @Component({
@@ -12,34 +11,24 @@ interface Opciones{
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-//arreglo de los elementos 
-  opciones: Opciones[] = [
-    {
-      icon: 'person-circle-outline',
-      name: 'Usuarios',
-      redirecTo: '/alert'
 
+  menu:Menu[]=[
+    {
+      icon:'sparkles-outline',
+      name:'Inicio',
+      redirecTo:'/tabs/tab1'
     },
     {
-      icon: 'body-outline',
-      name: 'Post',
-      redirecTo: '/card'
-
+      icon:'person-circle-outline',
+      name:'Usuarios',
+      redirecTo:'/tabs/tab2'
     },
     {
-      icon: 'call-outline',
-      name: 'Contacto',
-      redirecTo: '/contact'
-
+      icon:'paw-outline',
+      name:'Mascotas',
+      redirecTo:'/tabs/tab3'
     },
-    {
-      icon: 'bug-outline',
-      name: 'Mascotas',
-      redirecTo: '/animalitos'
-    },
-
   ]
 
-  
   constructor() {}
 }

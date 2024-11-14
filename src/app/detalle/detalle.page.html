@@ -2,30 +2,33 @@
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button (click)="regresar()">
-        Regresar
+         Regresar
       </ion-button>
     </ion-buttons>
-    <ion-title>detail Usuario</ion-title>
+    <ion-title>Detalle</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">User Detail</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle style="color:blue">Email{{usuario.email}}</ion-card-subtitle>
-      <ion-card-title style="color: cornflowerblue;">Name: {{usuario.name}}</ion-card-title>
+      <ion-card-subtitle>Name: {{usuario.name}}</ion-card-subtitle>
+      <ion-card-title>Email: {{usuario.email}}</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <p>
-        user: {{usuario.username}}<br>
         Street: {{usuario.address.street}}<br>
         City: {{usuario.address.city}}<br>
-        zipcode: {{usuario.address.zipcode}}<br>
-        phone: {{usuario.phone}}<br>
-        website: {{usuario.website}}
+        Zip Code: {{usuario.address.zipcode}}<br>
+        Phone {{usuario.phone}}
       </p>
     </ion-card-content>
-    
   </ion-card>
+
 </ion-content>

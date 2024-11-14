@@ -2,30 +2,33 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IAnimalito, IAnimalitos } from 'src/interfaces/IAnimalitos';
+import { IAnimalito, IAnimalitos } from 'src/interfaces/Ianimalitos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApicrudService {
 
-  constructor(private httpClient: HttpClient) { }
-
+  constructor(private httpclient: HttpClient) { }
 
   getMascotas():Observable<IAnimalitos[]>{
-    return this.httpClient.get<IAnimalitos[]>(`${environment.apiUrl}/mascotas`); //me devuelve un arreglo
-
+    return this.httpclient.get<IAnimalitos[]>(`${environment.apiUrl}/mascotas`);
   }
 
-  postMascotas(newAnimalito: IAnimalito):Observable<IAnimalito>{
-    return this.httpClient.post<IAnimalito>(`${environment.apiUrl}/mascotas`, newAnimalito); //me devuelve un arreglo
+  postMascotas(newMascota: IAnimalito):Observable<IAnimalito>{
+    return this.httpclient.post<IAnimalito>(`${environment.apiUrl}/mascotas`, newMascota);
+  }
+
+  getMascotaID(id:number):Observable<IAnimalitos>{
+    return this.httpclient.get<IAnimalitos>(`${environment.apiUrl}/mascotas/?id=${id}`);
   }
 
   putMascotas(animalito:any):Observable<IAnimalitos>{
-    return this.httpClient.put<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`, animalito);
- }
+    return this.httpclient.put<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`, animalito);
+  }
 
- deleteMascotas(animalito:any):Observable<IAnimalitos>{
-  return this.httpClient.delete<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`);
- }
+  deleteMascota(animalito:any):Observable<IAnimalitos>{
+    return this.httpclient.delete<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`);
+  }
+  
 }

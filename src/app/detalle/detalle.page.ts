@@ -8,20 +8,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetallePage implements OnInit {
 
-  usuario:any;
-
-  constructor(private activated : ActivatedRoute,
-              private router:Router) {  //expresion lamda
-                this.activated.queryParams.subscribe(params =>{
-                  this.usuario = JSON.parse(params['user']); //llamada user de alert.page.ts
+  usuario: any;
+  constructor(private activated: ActivatedRoute, 
+              private router: Router) { 
+                this.activated.queryParams.subscribe(params=>{
+                  this.usuario = JSON.parse(params['user'])
                 })
-               }
+              }
 
   ngOnInit() {
   }
 
   regresar(){
-    this.router.navigate(['/alert'])
+    this.router.navigate(['/tabs/tab2']);
   }
 
 }

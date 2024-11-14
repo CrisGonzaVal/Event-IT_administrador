@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <ion-buttons slot="start"> <!--flecha de retroceso-->
+      <ion-back-button 
+      defaultHref="/detalle-mascota"
+      text=""
+      color = "dark">
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Actualizar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form >
+    <ion-item>
+      <ion-input type="text" placeholder="nombre" [(ngModel)]="animalito.nombre" 
+      label="Ingrese Nombre..." labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="tipo" [(ngModel)]="animalito.tipo" 
+      label="Ingrese Tipo..." labelPlacement="floating"></ion-input>
+    </ion-item> 
+
+    <ion-item>
+      <ion-input type="text" placeholder="color" [(ngModel)]="animalito.color" 
+      label="Ingrese Color..." labelPlacement="floating"></ion-input>
+    </ion-item> 
+
+    <div style="text-align: center; margin-top: 20px;">
+      <ion-button (click)="actualizar()" shape="round" color="warning">
+        Actualizar Mascota
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>

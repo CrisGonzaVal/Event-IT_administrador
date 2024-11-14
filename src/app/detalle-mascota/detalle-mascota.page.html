@@ -1,38 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-
-    <ion-buttons slot="start"> <!--flecha de retroceso-->
-      <ion-back-button 
-      defaultHref="/animalitos"
-      text=""
-      color = "dark">
-      </ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="volver()">
+        Regresar
+      </ion-button>
     </ion-buttons>
-
-    <ion-title>detalleMascota</ion-title>
+    <ion-title>Detalle Mascota</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card style="margin-top:10%">
     <ion-card-header>
-      <ion-card-subtitle>Id: {{unaMascota.id}}</ion-card-subtitle>
-      <ion-card-title>Nombre: {{unaMascota.nombre}}</ion-card-title>
+      <ion-card-subtitle>Id Mascota: {{mascota.id}}</ion-card-subtitle>
+      <ion-card-title>Nombre Mascota: {{mascota.nombre}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <p>
-        Tipo: {{unaMascota.tipo}}<br>
-        Color: {{unaMascota.color}}
+        Tipo: {{mascota.tipo}}<br>
+        Color: {{mascota.color}}
       </p>
     </ion-card-content>
-
   </ion-card>
 
-    <div style="margin-top: 30px; text-align: center;">
-      <ion-button (click)="actualizarMascota(this.unaMascota)" shape="round" color="warning">
-        Actualizar Mascota
-      </ion-button>
-    </div>
+  <div style="text-align: center; margin-top: 30px;">
+    <ion-button (click)="actualizarMascota(this.mascota)" shape="round" color="warning">
+      Actualizar Mascota
+    </ion-button>
+    <ion-button (click)="consultaElimina()" shape="round" color="danger">
+      Eliminar Mascota
+    </ion-button>
+    <ion-button (click)="generarQr()" shape="round" color="success">
+      Generar QR
+    </ion-button>
+
+    <ion-card class="ion-text-center">
+      <ion-card-content>
+       <qrcode [qrdata]=qrdata [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+      </ion-card-content>
+    </ion-card>
   
+
+  </div>
+
 </ion-content>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApicrudService } from '../services/apicrud.service';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { IAnimalito } from 'src/interfaces/IAnimalitos';
+import { IAnimalito } from 'src/interfaces/Ianimalitos';
 
 @Component({
   selector: 'app-agregar',
@@ -11,40 +10,20 @@ import { IAnimalito } from 'src/interfaces/IAnimalitos';
 })
 export class AgregarPage implements OnInit {
 
-  mascota: IAnimalito= {
-    nombre: "",
+  mascota:IAnimalito={
+    nombre:"",
     tipo:"",
-    color: ""
+    color:""
   }
-
-  constructor(private apiCrud: ApicrudService, private router: Router,
-    private alertController: AlertController) { }
+  constructor(private apicrud: ApicrudService, 
+              private router: Router) { }
 
   ngOnInit() {
   }
 
-  crearMascota(){
-    this.apiCrud.postMascotas(this.mascota).subscribe();
-    this.mensaje();
-  }
-
-  async mensaje(){
-    const alert = await this.alertController.create({
-      header: 'Creando Mascota',
-      message: 'Su mascota ha sido creada',
-      buttons: [
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: () => {
-            this.router.navigate(['/agregar']);
-          },
-        },
-      ],
-    });
-
-    await alert.present();
+  CrearMascota(){
+    this.apicrud.postMascotas(this.mascota).subscribe();
+    this.router.navigate(['/tabs/tab3']);
   }
 
 }
-

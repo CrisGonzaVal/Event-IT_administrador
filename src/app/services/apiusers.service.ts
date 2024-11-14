@@ -6,14 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiusersService {
+
   apiUrl='https://jsonplaceholder.typicode.com/users';
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpclient: HttpClient) { }
 
+  getUsers():Observable<any>{
+    return this.httpclient.get<any>(this.apiUrl);
+  }
 
-  getUser():Observable<any>{
-    //Any es un observable que lee cualquier tipo de datos
-    
-      return this.http.get<any>(this.apiUrl);
-    }
 }

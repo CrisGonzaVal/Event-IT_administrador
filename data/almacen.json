@@ -19,19 +19,40 @@
       "color": "verde"
     }
   ],
-  "usuarios":[
+  "usuarios": [
     {
-     "id":"1",
-     "username":"usuario1",
-     "email":"usuario1@mail.cl",
-     "password":"duoc1234",
-     "isactive":true
+      "id": "1",
+      "username": "usuario1",
+      "email": "usuario1@mail.cl",
+      "password": "duoc1234",
+      "isactive": true
+    },
+    {
+      "id": "2",
+      "username": "usuario2",
+      "email": "usuario2@mail.cl",
+      "password": "maipu1234",
+      "isactive": true
     }
-    
-    
+  ],
+  "qr": [
+    {
+      "id": "208b",
+      "nomMascota": "Rainman",
+      "tipoMascota": "Tortuga",
+      "username": "usuario1"
+    },
+    {
+      "id": "b95f",
+      "nomMascota": "Leon",
+      "tipoMascota": "Perro",
+      "username": "usuario1"
+    },
+    {
+      "id": "207d",
+      "nomMascota": "Princesa",
+      "tipoMascota": "Perro",
+      "username": "usuario1"
+    }
   ]
-    
-
-
-
 }

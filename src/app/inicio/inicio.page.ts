@@ -1,17 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular'; 
-import { AlertController } from '@ionic/angular'; //cuadros de mensajes
-import { Router } from '@angular/router'; /* redirecciona a otras pages */
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
-import { AuthService } from 'src/app/services/auth.service';
-import { FormBuilder, FormGroup , FormControl, Validators} from '@angular/forms';
-
-interface Opciones{
-  icon: string;
-  name: string;
-  redirecTo: string;
-}
-
 
 @Component({
   selector: 'app-inicio',
@@ -19,22 +11,6 @@ interface Opciones{
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-
-  opciones: Opciones[] = [
-    {
-      icon: 'bug-outline',
-      name: 'Alert',
-      redirecTo: '/alert'
-
-    },
-    {
-      icon: 'body-outline',
-      name: 'Card',
-      redirecTo: '/card'
-
-    },
-
-  ]
 
   userdata:any;
 
@@ -46,33 +22,28 @@ export class InicioPage implements OnInit {
     isactive:false
   }
 
-  loginForm: FormGroup;
+  loginForm:FormGroup;
 
-  constructor(private menucontroller: MenuController, 
-              private alertcontroller: AlertController,
-              private router:Router,
-              private authservice: AuthService,
-              private toast: ToastController,
-              private fbuilder: FormBuilder) { 
-
-                this.loginForm = this.fbuilder.group({
-                  'username' : new FormControl("",[Validators.required, Validators.minLength(6)]), 
-                  'password' : new FormControl("",[Validators.required, Validators.minLength(8)]),
+  constructor(private authservice:AuthService, private router:Router, private toast: ToastController,
+              private alertcontroller: AlertController, private builder: FormBuilder) {
+                this.loginForm = this.builder.group({
+                  'username' : new FormControl("", [Validators.required, Validators.minLength(6)]),
+                  'password' : new FormControl("", [Validators.required, Validators.minLength(8)]),
                 })
-              } /*Llamar las bibliotecas*/
+               }
 
   ngOnInit() {
   }
 
-  login(){
+
+ login(){
     if (!this.loginForm.valid){
       return;
     }
-
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 
-    this.authservice.getByUsername(username).subscribe(resp => {
+    this.authservice.GetUserByUsername(username).subscribe(resp =>{
       this.userdata = resp;
       console.log(this.userdata);
       if (this.userdata.length === 0) {
@@ -99,11 +70,9 @@ export class InicioPage implements OnInit {
         return;
       }
       this.IniciarSesion(this.usuario);
-
-
     })
+ }
 
-  }
 
   private IniciarSesion(usuario:any){
     sessionStorage.setItem('username', usuario.username);
@@ -152,39 +121,9 @@ async UsuarioNoExiste(){
   alerta.present();
 }
 
+Registrar(){
+  this.router.navigate(['/crear-usuario']);
+}
 
 
-
-  mostrarMenu(){
-    this.menucontroller.open('first'); /*permite abrir el menu diseñado en el componente app*/
-  }
-
-  /* necesita intervesion de un tercero x eso es asincronico */
-  async mensaje(){
-    const alert = await this.alertcontroller.create({
-      header: 'Bienvenid@ a mi App!',
-      mode:'ios',  //mismo diseño en ios y android
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            console.log('El usuario ha cancelado la acción');
-          },
-        },
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: () => {
-            console.log('El usuario a confirmado el ingreso');
-            this.router.navigate(['/alert']); //Permite navegar a otro page
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-
-    
-  }
 }

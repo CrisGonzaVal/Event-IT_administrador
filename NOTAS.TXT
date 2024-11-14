@@ -59,3 +59,16 @@ ionic g service services/apicrud
 
 >ionic g guard guards/autorizado //autorizacion a acceder a los pages
 >(*) CanActivate
+
+
+
+--------------------------------------------------------------------
+instalar android studio
+sdk
+
+>npm install @capacitor/android
+>npx cap add android
+
+>ionic capacitor sync android
+>ionic capacitor copy android
+>ionic capacitor open android

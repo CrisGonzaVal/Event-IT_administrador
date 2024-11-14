@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start"> <!--flecha de retroceso-->
+      <ion-back-button 
+      defaultHref="/animalitos"
+      text=""
+      color = "dark">
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Crear Mascota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form>
+    <ion-item>
+      <ion-input type="text" placeholder="Nombre.."
+      label="Ingrese nombre: " labelPlacement="floating" name="nombre"
+      [(ngModel)]="mascota.nombre">
+    </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Tipo.."
+      label="Ingrese Tipo: " labelPlacement="floating" name="tipo"
+      [(ngModel)]="mascota.tipo">
+    </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Color.."
+      label="Ingrese color: " labelPlacement="floating" name="color"
+      [(ngModel)]="mascota.color">
+    </ion-input>
+    </ion-item>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <ion-button (click)="crearMascota()" shape="round" color="success">
+        Crear Mascota
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

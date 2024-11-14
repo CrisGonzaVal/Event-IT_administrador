@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; //para recibir url con datos de page detalle
 import { ApicrudService } from '../services/apicrud.service';
 import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-actualizar',
@@ -10,71 +12,41 @@ import { AlertController } from '@ionic/angular';
 })
 export class ActualizarPage implements OnInit {
 
-  unaMascota:any;
-
+  mascota: any;
   animalito={
     id:"",
     nombre:"",
     tipo:"",
-    color:"",
+    color:""
   }
 
-  constructor(private activated: ActivatedRoute,
-              private alertcontroller: AlertController,
+  constructor(private apicrud: ApicrudService, private alertcontroller: AlertController, 
               private router: Router,
-              private apicrud: ApicrudService) {
-                this.activated.queryParams.subscribe(param => {
-                  this.unaMascota =JSON.parse(param ['mascota']);
+              private activated: ActivatedRoute) { 
+                this.activated.queryParams.subscribe(param=>{
+                  this.mascota = JSON.parse(param['mascota']);
                 })
-               }
+              }
 
   ngOnInit() {
-    this.animalito = this.unaMascota;
+    this.animalito=this.mascota;
   }
 
-   async actualizar(){
-
-    const alert = await this.alertcontroller.create({
-      header: 'Actualización',
-      message:'Necesita Modificar la información',
-      mode:'ios',
-      buttons: [
-        {
-          text: 'No',
-          role: 'cancel',
-          handler: () => {
-            this.router.navigate(['/inicio']);
-          },
-        },
-        {
-          text: 'Si',
-          role: 'confirm',
-          handler: () => {
-            this.modificaMascota();
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-
-  }//fin metodo
-
-  modificaMascota(){
+  updateAnimalito(){
     this.apicrud.putMascotas(this.animalito).subscribe();
+    this.mensaje();
   }
 
   async mensaje(){
     const alert = await this.alertcontroller.create({
-      header: 'Actualización',
-      message:'Necesita Modificar la información',
-      mode:'ios',
+      header: 'Modificando Mascota',
+      message: 'Su mascota ha sido modificada',
       buttons: [
-        {
-          text: 'Ok',
+         {
+          text: 'OK',
           role: 'confirm',
           handler: () => {
-            this.router.navigate(['/inicio']);
+            this.router.navigate(['/tabs/tab1']);
           },
         },
       ],

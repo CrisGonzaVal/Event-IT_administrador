@@ -1,0 +1,37 @@
+{
+  "mascotas": [
+    {
+      "id": "1",
+      "nombre": "Princesa",
+      "tipo": "Perro",
+      "color": "verde"
+    },
+    {
+      "id": "2",
+      "nombre": "Leon",
+      "tipo": "Perro",
+      "color": "Blanco"
+    },
+    {
+      "id": "3",
+      "nombre": "Rainman",
+      "tipo": "Tortuga",
+      "color": "verde"
+    }
+  ],
+  "usuarios":[
+    {
+     "id":"1",
+     "username":"usuario1",
+     "email":"usuario1@mail.cl",
+     "password":"duoc1234",
+     "isactive":true
+    }
+    
+    
+  ]
+    
+
+
+
+}

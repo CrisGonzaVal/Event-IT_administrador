@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserMultiFormatReader } from '@zxing/browser';
 import { ApicrudSesionService } from '../services/apicrud-sesion.service';
+import { Camera } from '@capacitor/camera';
 
 @Component({
   selector: 'app-lector-camara',
@@ -18,8 +19,19 @@ export class LectorCamaraPage implements OnInit {
     this.codeReader = new BrowserMultiFormatReader();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.solicitarPermisos();
+  }
 
+  async solicitarPermisos() {
+    await Camera.requestPermissions();
+    try {
+      await Camera.requestPermissions(); // Solicita los permisos de la cámara
+      console.log('Permisos de cámara otorgados.');
+    } catch (error) {
+      console.error('Error al solicitar permisos:', error);
+    }
+  }
   // Activar el lector de QR
   leerQr() {
     this.scannerEnabled = true;

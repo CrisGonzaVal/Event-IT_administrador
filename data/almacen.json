@@ -60,13 +60,11 @@
     {
       "id": "3f54",
       "rut": "19182972-7",
-      "username": "Cristian Gonzalez ",
+      "username": "Cristian Gonzalez Valenzuela",
       "email": "crise.gonzalez@duocuc.cl",
       "password": "123456789"
     }
   ],
-
-  
   "Actividades": [
     {
       "nombretaller": "Taller de Desarrollo Web",
@@ -224,7 +222,6 @@
     }
   ],
   "inscripciones": [
-  
     {
       "id": "199e19182972-7",
       "idTaller": "199e",

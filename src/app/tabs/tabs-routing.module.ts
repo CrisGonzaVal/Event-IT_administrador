@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AutorizadoGuard } from '../guards/autorizado.guard';
 
 const routes: Routes = [
   {
@@ -39,6 +40,15 @@ const routes: Routes = [
       {
         path: 'lector-camara',
         loadChildren: () => import('../lector-camara/lector-camara.module').then( m => m.LectorCamaraPageModule)
+      },
+      {
+        path: 'administrador-eventos',
+        loadChildren: () => import('../administrador-eventos/administrador-eventos.module').then( m => m.AdministradorEventosPageModule)
+      },
+      {
+        path: 'editar-usuario',
+        loadChildren: () => import('../editar-usuario/editar-usuario.module').then(m => m.EditarUsuarioPageModule),
+        canActivate: [AutorizadoGuard]
       },
       {
         path: '',

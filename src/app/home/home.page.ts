@@ -43,7 +43,10 @@ export class homePage {
     this.menucontroller.open('first');
   }
 
-
+// Método para navegar a otras páginas
+navegar(page: string) {
+  this.router.navigate([`/tabs/${page}`]);
+}
 
 
   async showToast(msg: any){

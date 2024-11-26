@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApicrudService } from '../services/apicrud.service';
 import { Users } from 'src/interfaces/users';
 import { ToastController } from '@ionic/angular';
+import { Administrador } from 'src/interfaces/administrador';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -12,7 +13,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class EditarUsuarioPage implements OnInit {
 
-  usuario: any;
+  admin: any;
 
   
 
@@ -25,7 +26,7 @@ export class EditarUsuarioPage implements OnInit {
 
   ngOnInit() {
     //Recuperar datos del usuario del servicio de autenticación
-    this.usuario = this.auth.getSesionAdmin();
+    this.admin = this.auth.getSesionAdmin();
   }
 
 
@@ -33,20 +34,20 @@ export class EditarUsuarioPage implements OnInit {
 
 
 
-  actualizarUsuario(){
+  actualizarAdmin(){
 
-    this.api.putUserById(this.usuario.id, this.usuario).subscribe({
+    this.api.putAdminById(this.admin.id, this.admin).subscribe({
 
       
-      next: (response: Users) => {
+      next: (response: Administrador) => {
 
-        this.auth.setSesionAdmin(this.usuario);
-        this.showToast('Usuario actualizado con éxito:');
+        this.auth.setSesionAdmin(this.admin);
+        this.showToast('Administrador actualizado con éxito:');
         // Redirigir al usuario a la página principal si la actualización fue exitosa
         this.router.navigate(['/tabs/home']);
       },
       error: (error: any) => {
-        this.showToast('Error actualizando el usuario: '+ error.message);
+        this.showToast('Error actualizando administrador: '+ error.message);
         console.log(error.message);
         // Manejar el error
       }

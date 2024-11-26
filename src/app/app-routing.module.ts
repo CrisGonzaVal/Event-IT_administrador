@@ -25,12 +25,8 @@ const routes: Routes = [
     path: 'registrar',
     loadChildren: () => import('./registrar/registrar.module').then(m => m.RegistrarPageModule),
     canActivate: [disableMenuGuard] // Desactiva el menú aquí
-  },
-  {
-    path: 'editar-usuario',
-    loadChildren: () => import('./editar-usuario/editar-usuario.module').then(m => m.EditarUsuarioPageModule),
-    canActivate: [AutorizadoGuard]
-  },
+  }
+
   
   
 ];

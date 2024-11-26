@@ -72,3 +72,8 @@ sdk
 >ionic capacitor sync android
 >ionic capacitor copy android
 >ionic capacitor open android
+
+
+
+--------------------------------------
+captura qr = npm install @zxing/browser

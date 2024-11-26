@@ -1,23 +1,48 @@
 <ion-header [translucent]="true">
-
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-      </ion-buttons>
-      <ion-icon name="qr-code-outline" color="light" slot="end" size="large" style="margin-right: 5%;"></ion-icon>
-    
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Lectura de QR</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid fixer>
+  <!-- Video para escanear QR -->
+  <div *ngIf="scannerEnabled">
+    <video id="video" style="width: 100%; height: auto;"></video>
+  </div>
+
+  <!-- Botón para activar cámara -->
+  <ion-grid>
     <ion-row>
-      <ion-col size="12"></ion-col>
-      <ion-button (click)="leerQr()" expand="block" fill="solid" color="primary">
-        <ion-icon name="camera-outline" color="light" slot="end" size="large" style="margin-right: 5%;"></ion-icon>
-        Abrir Camara
-      </ion-button>
+      <ion-col size="12">
+        <ion-button (click)="leerQr()" expand="block" fill="solid" color="primary">
+          <ion-icon name="camera-outline" color="light" slot="end" size="large"></ion-icon>
+          Escanear QR
+        </ion-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
+
+  <!-- Mostrar información del QR escaneado -->
+  <ion-card *ngIf="inscripcion">
+    <ion-card-header>
+      <ion-title>Información del QR</ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Nombre:</strong> {{ inscripcion.nombre }}</p>
+      <p><strong>Fecha:</strong> {{ inscripcion.fecha }}</p>
+      <p><strong>RUT:</strong> {{ inscripcion.rut }}</p>
+      <p><strong>Email:</strong> {{ inscripcion.email }}</p>
+      <p><strong>Asistido:</strong> {{ inscripcion.asistido ? 'Sí' : 'No' }}</p>
+    </ion-card-content>
+
+    <!-- Botón para marcar como asistido -->
+    <ion-card-content>
+      <ion-button expand="block" color="success" (click)="marcarAsistencia()" *ngIf="!inscripcion.asistido">
+        Marcar como Asistido
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

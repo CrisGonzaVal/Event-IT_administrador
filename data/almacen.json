@@ -63,6 +63,13 @@
       "username": "Cristian Gonzalez Valenzuela",
       "email": "crise.gonzalez@duocuc.cl",
       "password": "123456789"
+    },
+    {
+      "id": "3zf4",
+      "rut": "12345678-7",
+      "username": "Felipe Carrillo",
+      "email": "admin",
+      "password": "admin123456"
     }
   ],
   "Actividades": [

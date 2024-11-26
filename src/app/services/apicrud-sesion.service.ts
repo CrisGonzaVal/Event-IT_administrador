@@ -60,6 +60,10 @@ updateSeminario(id: string, data: any): Observable<any> {
     return this.httpClient.get<inscripciones[]>(`${environment.apiUrl}/inscripciones`);
   }
 
+  getInscripcionById(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}/inscripciones/${id}`);
+  }
+
   postInscripcion(newqrdata: inscripciones):Observable<inscripciones>{
   return this.httpClient.post<inscripciones>(`${environment.apiUrl}/inscripciones`, newqrdata);}
 

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Tab4PageRoutingModule } from './tab4-routing.module';
+import { LectorCamaraPageRoutingModule } from './lector-camara-routing.module';
 
-import { Tab4Page } from './tab4.page';
+import { LectorCamaraPage } from './lector-camara.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Tab4PageRoutingModule
+    LectorCamaraPageRoutingModule
   ],
-  declarations: [Tab4Page]
+  declarations: [LectorCamaraPage]
 })
-export class Tab4PageModule {}
+export class LectorCamaraPageModule {}

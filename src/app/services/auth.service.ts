@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { Users } from 'src/interfaces/users';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { Administrador } from 'src/interfaces/administrador';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,49 +33,44 @@ export class AuthService {
     return this.httpclient.get<Users>(`${environment.apiUrl}/usuarios/?email=${email}`);
   }
 
+  getByEmailAdmin(email: any): Observable<Administrador> {
+    return this.httpclient.get<Administrador>(`${environment.apiUrl}/administrador/?email=${email}`);
+  }
+
   // Comprobar si está logueado
   IsLoggedIn(){
     return sessionStorage.getItem('username')!=null;
   }
  
 
-  //persistencia del usuario
 
-  setSesionUser(usuario: any) {
-    sessionStorage.setItem('id', usuario.id);
-    sessionStorage.setItem('rut', usuario.rut);
-    sessionStorage.setItem('username', usuario.username);
-    sessionStorage.setItem('email', usuario.email);
-    sessionStorage.setItem('password', usuario.password);
-    sessionStorage.setItem('carrera', usuario.carrera);
-    sessionStorage.setItem('jornada', usuario.jornada);
-    sessionStorage.setItem('seccion', usuario.seccion);
-    sessionStorage.setItem('ingresado', 'true');
-    return 'Sesión Iniciada '+ usuario.username;
+  setSesionAdmin(administrador: any) {
+    sessionStorage.setItem('id', administrador.id);
+    sessionStorage.setItem('rut', administrador.rut);
+    sessionStorage.setItem('username', administrador.username);
+    sessionStorage.setItem('email', administrador.email);
+    sessionStorage.setItem('password', administrador.password);
+    return 'Sesión Iniciada '+ administrador.username;
 
      // Almacenar en sessionStorage
 
   }
   
-  getSesionUser() {
-    const getUsuario = {
+
+  getSesionAdmin() {
+    const getAdmin = {
       id: sessionStorage.getItem('id'),
       rut: sessionStorage.getItem('rut'),
       username: sessionStorage.getItem('username'),
       email: sessionStorage.getItem('email'),
       password: sessionStorage.getItem('password'),
-      carrera: sessionStorage.getItem('carrera'),
-      jornada: sessionStorage.getItem('jornada'),
-      seccion: sessionStorage.getItem('seccion'),
-      isactive: sessionStorage.getItem('isactive') === 'true' ? true : true
-      
     };
 
-    return getUsuario;
+    return getAdmin;
   }
   
 
-  cerrarSesionUser() {
+  cerrarSesionAdmin() {
     //  para limpiar todo
      sessionStorage.clear();
      this.router.navigateByUrl('/login', { replaceUrl: true });
@@ -80,6 +79,8 @@ export class AuthService {
   }
 
   
-  
-
 }
+
+
+
+  

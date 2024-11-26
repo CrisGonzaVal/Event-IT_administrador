@@ -25,7 +25,7 @@ export class EditarUsuarioPage implements OnInit {
 
   ngOnInit() {
     //Recuperar datos del usuario del servicio de autenticación
-    this.usuario = this.auth.getSesionUser();
+    this.usuario = this.auth.getSesionAdmin();
   }
 
 
@@ -40,7 +40,7 @@ export class EditarUsuarioPage implements OnInit {
       
       next: (response: Users) => {
 
-        this.auth.setSesionUser(this.usuario);
+        this.auth.setSesionAdmin(this.usuario);
         this.showToast('Usuario actualizado con éxito:');
         // Redirigir al usuario a la página principal si la actualización fue exitosa
         this.router.navigate(['/tabs/home']);

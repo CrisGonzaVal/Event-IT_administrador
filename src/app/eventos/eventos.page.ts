@@ -33,7 +33,7 @@ export class EventosPage implements OnInit {
 
   cargarDatos() {
     console.log("cargando datos en actividades");
-    this.usuario = this.auth.getSesionUser();
+    this.usuario = this.auth.getSesionAdmin();
     
     this.apicrudSesion.getEventos().subscribe((data) => {
       this.evento = data;

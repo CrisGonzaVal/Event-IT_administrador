@@ -13,7 +13,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class homePage {
 
-  usuario: any;
+  admin: any;
 
   constructor(
               private menucontroller:MenuController,
@@ -29,63 +29,19 @@ export class homePage {
   
   ngOnInit() {
    // recuperar objeto recibido por url
-     this.usuario = this.auth.getSesionUser();
+     this.admin = this.auth.getSesionAdmin();
      console.log("se inicia vista home con ngOnInit");
   }
 
   ionViewWillEnter(){
     console.log("Se inicia denuevo la vista home");
-    this.usuario = this.auth.getSesionUser();
+    this.admin = this.auth.getSesionAdmin();
    }
 
 
   mostrarMenu(){
     this.menucontroller.open('first');
   }
-
-  modificarUsuario(){
-     this.router.navigate(['./tabs/editar-usuario']);
-  }
-  
-
-  async eliminarUsuario(){
-    const alert = await this.alert.create({
-      header: 'Eliminar Cuenta!',
-      message: 'Estás seguro de eliminar tu cuenta?',
-      mode:'ios',  //mismo diseño en ios y android
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            this.showToast('Ha cancelado la acción');
-          },
-        },
-        {
-          text: 'Si Seguro',
-          role: 'confirm',
-          handler: () => {
-
-            this.api.deleteUserById(this.usuario.id).subscribe({
-              next: () => {
-                this.showToast('Usuario eliminado con éxito');
-                // Lógica adicional después de eliminar el usuario, como redirigir o actualizar la lista
-              },
-              error: (error) => {
-                this.showToast('Error al eliminar el usuario:'+ error);
-              }
-            });
-            this.router.navigate(['/login']); 
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-
-    
-  }
-
 
 
 

@@ -56,6 +56,17 @@
       "isactive": true
     }
   ],
+  "administrador": [
+    {
+      "id": "3f54",
+      "rut": "19182972-7",
+      "username": "Cristian Gonzalez ",
+      "email": "crise.gonzalez@duocuc.cl",
+      "password": "123456789"
+    }
+  ],
+
+  
   "Actividades": [
     {
       "nombretaller": "Taller de Desarrollo Web",

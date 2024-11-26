@@ -80,5 +80,6 @@ updateSeminario(id: string, data: any): Observable<any> {
     return this.httpClient.patch(`${environment.apiUrl}/inscripciones/${id}`, data);
   }
 
+  
 
 }

@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      </ion-buttons>
+      <ion-icon name="qr-code-outline" color="light" slot="end" size="large" style="margin-right: 5%;"></ion-icon>
+    
+    <ion-title>Lectura de QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid fixer>
+    <ion-row>
+      <ion-col size="12"></ion-col>
+      <ion-button (click)="leerQr()" expand="block" fill="solid" color="primary">
+        <ion-icon name="camera-outline" color="light" slot="end" size="large" style="margin-right: 5%;"></ion-icon>
+        Abrir Camara
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

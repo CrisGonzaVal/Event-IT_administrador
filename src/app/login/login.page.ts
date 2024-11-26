@@ -18,16 +18,12 @@ export class loginPage implements OnInit {
 
   userdata:any;
 
-  usuario={
+  admin={
     id:"",
     rut:"",
     username:"",
     email:"",
     password:"",
-    carrera:"",
-    jornada:"",
-    seccion:"",
-    isactive:true
   }
 
   
@@ -47,7 +43,7 @@ export class loginPage implements OnInit {
               } /*Llamar las bibliotecas*/
 
   ngOnInit() {
-    this.authservice.cerrarSesionUser();
+    this.authservice.cerrarSesionAdmin();
   }
 
   async login(){
@@ -59,7 +55,7 @@ export class loginPage implements OnInit {
 
     // Mostrar el indicador de carga
     const loading = await this.loadingController.create({
-      message: 'Validando Usuario...',
+      message: 'Validando Administrador...',
       spinner: 'circles', // Cambiar el estilo del spinner si lo deseas
     });
     await loading.present();
@@ -72,7 +68,7 @@ export class loginPage implements OnInit {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
 
-    this.authservice.getByEmail(email).subscribe({next: async (resp) => {
+    this.authservice.getByEmailAdmin(email).subscribe({next: async (resp) => {
       this.userdata = resp;
       console.log(this.userdata);
 
@@ -84,34 +80,24 @@ export class loginPage implements OnInit {
         return;
       }
 
-      this.usuario={
+      this.admin={
         id:this.userdata[0].id,
         rut: this.userdata[0].rut,
         username: this.userdata[0].username,
         password: this.userdata[0].password,
         email:this.userdata[0].email,
-        carrera:this.userdata[0].carrera,
-        jornada:this.userdata[0].jornada,
-        seccion:this.userdata[0].seccion,
-        isactive: this.userdata[0].isactive
       };
 
-      if (this.usuario.password !== password) {
+      if (this.admin.password !== password) {
         this.loginForm.reset();
         await loading.dismiss(); // Ocultar el loading
         this.ErrorUsuario(); 
         return;
       }
 
-      if (!this.usuario.isactive) {
-        this.loginForm.reset();
-        await loading.dismiss(); // Ocultar el loading
-        this.UsuarioInactivo();
-        return;
-      }
 
       // Sesión iniciada correctamente
-      this.IniciarSesion(this.usuario);
+      this.IniciarSesion(this.admin);
       await loading.dismiss(); // Ocultar el loading al finalizar
     },
 
@@ -125,9 +111,9 @@ export class loginPage implements OnInit {
 
   }
 
-  private IniciarSesion(usuario:any){
+  private IniciarSesion(admin:any){
     this.router.navigateByUrl('/tabs/home', { replaceUrl: true }); // para forzar la recarga completa de la página home si es necesario.
-    this.showToast( this.authservice.setSesionUser(usuario) );
+    this.showToast( this.authservice.setSesionAdmin(admin) );
 
   }
 
@@ -141,14 +127,6 @@ export class loginPage implements OnInit {
   }
 
   
-  async UsuarioInactivo(){
-    const alerta = await this.alertcontroller.create({ 
-      header : 'Usuario inactivo',
-      message : 'Contactar a admin@admin.cl',
-      buttons : ['OK']
-    })
-    alerta.present();
-  }
 
   
 async ErrorUsuario(){
@@ -162,16 +140,13 @@ async ErrorUsuario(){
 
 async UsuarioNoExiste(){
   const alerta = await this.alertcontroller.create({ 
-    header : 'No existe...',
+    header : 'Administrador no  existe...',
     message : 'Debe registrarse..',
     buttons : ['OK']
   })
   alerta.present();
 }
 
-  registrar(){
-    this.router.navigate(['./registrar']); //Permite navegar a otro page
-  }
 
 
 

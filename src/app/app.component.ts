@@ -75,7 +75,7 @@ export class AppComponent {
   
 
   cerrarSesion() {
-    this.showToast(this.auth.cerrarSesionUser());  // Llama al método de cierre de sesión en AuthService
+    this.showToast(this.auth.cerrarSesionAdmin());  // Llama al método de cierre de sesión en AuthService
 
     console.log("se ejecutó el cerrar sesion");
   }

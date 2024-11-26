@@ -35,13 +35,18 @@ const routes: Routes = [
         path: 'talleres-asistidos',
         loadChildren: () => import('../talleres-asistidos/talleres-asistidos.module').then( m => m.TalleresAsistidosPageModule)
       },
+
+      {
+        path: 'lector-camara',
+        loadChildren: () => import('../lector-camara/lector-camara.module').then( m => m.LectorCamaraPageModule)
+      },
       {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

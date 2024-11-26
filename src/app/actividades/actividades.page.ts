@@ -33,7 +33,7 @@ export class ActividadesPage implements OnInit {
 
   cargarDatos() {
     console.log("cargando datos en actividades");
-    this.usuario = this.auth.getSesionUser();
+    this.usuario = this.auth.getSesionAdmin();
     
     this.apicrudSesion.getActividades().subscribe((data) => {
       this.actividad = data;

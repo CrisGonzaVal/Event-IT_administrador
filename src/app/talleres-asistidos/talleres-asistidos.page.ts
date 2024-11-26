@@ -15,12 +15,12 @@ export class TalleresAsistidosPage implements OnInit {
   constructor(private apicrudSesion: ApicrudSesionService, private auth: AuthService) {}
 
   ngOnInit() {
-    this.usuario = this.auth.getSesionUser();
+    this.usuario = this.auth.getSesionAdmin();
     this.cargarTalleresAsistidos();
   }
 
   ionViewWillEnter(){
-    this.usuario = this.auth.getSesionUser();
+    this.usuario = this.auth.getSesionAdmin();
     this.cargarTalleresAsistidos();
   }
 

@@ -38,7 +38,7 @@ export class LectorCamaraPage implements OnInit {
 
   // Método para buscar inscripción según el QR
   buscarInscripcion(id: string) {
-    this.apiCrud.getInscripcionById(id).subscribe(
+    this.apiCrud.getInscripcion(id).subscribe(
       (data) => {
         this.inscripcion = data;
       },

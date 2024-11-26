@@ -1,47 +1,51 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-import { AutorizadoGuard } from '../guards/autorizado.guard';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule), 
-        canActivate:[AutorizadoGuard]
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then(m => m.homePageModule),
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule),
-        canActivate:[AutorizadoGuard]
+        path: 'actividades',
+        loadChildren: () => import('../actividades/actividades.module').then(m => m.ActividadesPageModule),
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule),
-        canActivate:[AutorizadoGuard]
+        path: 'eventos',
+        loadChildren: () => import('../eventos/eventos.module').then(m => m.EventosPageModule),
       },
       {
-        path: 'tab4',
-        loadChildren: () => import('../tab4/tab4.module').then( m => m.Tab4PageModule)
+        path: 'editar-usuario',  // Añadir la ruta para editar-usuario
+        loadChildren: () => import('../editar-usuario/editar-usuario.module').then(m => m.EditarUsuarioPageModule),
+      },
+      {
+        path: 'seminarios',
+        loadChildren: () => import('../seminarios/seminarios.module').then(m => m.SeminariosPageModule),
+      },
+      {
+        path: 'lector-qr',
+        loadChildren: () => import('../lector-qr/lector-qr.module').then(m => m.LectorQRPageModule),
+      },
+      {
+        path: 'talleres-asistidos',
+        loadChildren: () => import('../talleres-asistidos/talleres-asistidos.module').then( m => m.TalleresAsistidosPageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}

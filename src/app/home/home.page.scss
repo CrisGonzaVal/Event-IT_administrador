@@ -1,0 +1,56 @@
+.imagen-logo {
+  display: block; 
+  margin: 0 auto; 
+  margin-left: 18%;
+  width: 100px; /* Tamaño del logo */
+  height: auto; 
+}
+
+
+
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.perfil-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+ion-card {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  --ion-card-content-padding: 8px;
+}
+
+ion-card-title {
+  text-align: center;
+  color: var(--ion-color-primary);
+  font-weight: bold;
+}
+
+ion-item {
+  --inner-padding-end: 0;
+}
+
+ion-label h3 {
+  margin: 0;
+  font-weight: bold;
+  color: var(--ion-color-dark);
+}
+
+ion-label p {
+  margin: 0;
+  color: var(--ion-color-medium);
+  font-size: 0.9rem;
+}
+
+ion-button {
+  margin-top: 10px;
+  --border-radius: 8px;
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AutorizadoGuard } from '../guards/autorizado.guard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -8,6 +8,8 @@ import { AutorizadoGuard } from '../guards/autorizado.guard';
 })
 export class TabsPage {
 
-  constructor(private autorizado: AutorizadoGuard) {}
+  constructor(private router:Router) {}
 
 }
+
+

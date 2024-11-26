@@ -13,15 +13,16 @@ export class AutorizadoGuard  {
 
   constructor(private authservice: AuthService, 
               private toast: ToastController,
-              private router: Router){
-  }
+              private router: Router,
+  ) { }
+  
 
   canActivate():
     
     | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (!this.authservice.IsLoggedIn()){
         this.showToast('Debe iniciar sesión..');
-        this.router.navigateByUrl('/inicio');
+        this.router.navigateByUrl('./login');
         return false;
       }
       else{
@@ -40,3 +41,4 @@ export class AutorizadoGuard  {
     }
 
 }
+

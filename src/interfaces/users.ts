@@ -1,30 +1,14 @@
+//get, put, delete
 
 export interface Users{
-    id:number;
+    id?: string;  // Hacemos que el campo 'id' sea opcional para que el json lo genere automaticamente
+    rut: string;
     username:string;
     email:string;
     password:string;
-    isactive: boolean;
-}
+    carrera:string;
+    jornada:string;
+    seccion:string;
+    isactive:boolean;
 
-export interface UserNuevo{
-    username:string;
-    email:string;
-    password:string;
-    isactive: boolean;
-}
-
-//post
-export interface misQr{
-    nomMascota:string;
-    tipoMascota:string;
-    username:string;
-}
-
-//get, put, delete
-export interface allQr{
-    id:string;
-    nomMascota:string;
-    tipoMascota:string;
-    username:string;
 }

@@ -2,33 +2,40 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IAnimalito, IAnimalitos } from 'src/interfaces/Ianimalitos';
+import { Users } from 'src/interfaces/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApicrudService {
 
-  constructor(private httpclient: HttpClient) { }
-
-  getMascotas():Observable<IAnimalitos[]>{
-    return this.httpclient.get<IAnimalitos[]>(`${environment.apiUrl}/mascotas`);
-  }
-
-  postMascotas(newMascota: IAnimalito):Observable<IAnimalito>{
-    return this.httpclient.post<IAnimalito>(`${environment.apiUrl}/mascotas`, newMascota);
-  }
-
-  getMascotaID(id:number):Observable<IAnimalitos>{
-    return this.httpclient.get<IAnimalitos>(`${environment.apiUrl}/mascotas/?id=${id}`);
-  }
-
-  putMascotas(animalito:any):Observable<IAnimalitos>{
-    return this.httpclient.put<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`, animalito);
-  }
-
-  deleteMascota(animalito:any):Observable<IAnimalitos>{
-    return this.httpclient.delete<IAnimalitos>(`${environment.apiUrl}/mascotas/${animalito.id}`);
-  }
+  constructor(private httpClient: HttpClient,) { }
   
+
+
+  getUsers():Observable<Users[]>{
+    return this.httpClient.get<Users[]>(`${environment.apiUrl}/usuarios`); //me devuelve un arreglo
+
+  }
+
+  postUser(newUsuario: Users):Observable<Users>{
+    return this.httpClient.post<Users>(`${environment.apiUrl}/usuarios`, newUsuario);
+  }
+
+
+ // Método para obtener un usuario específico por su id
+ getUserById(id: string): Observable<Users> {
+  return this.httpClient.get<Users>(`${environment.apiUrl}/usuarios/${id}`);
+}
+
+ // Actualizar usuario por ID
+ putUserById(id: string, usuario: any): Observable<Users> {
+  return this.httpClient.put<Users>(`${environment.apiUrl}/usuarios/${id}`, usuario);
+}
+
+deleteUserById(id: string): Observable<void> {
+  return this.httpClient.delete<void>(`${environment.apiUrl}/usuarios/${id}`);
+}
+
+ 
 }

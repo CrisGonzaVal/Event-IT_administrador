@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Tarjeta del formulario de registro -->
+  <ion-card class="register-card">
+    <ion-card-header>
+      <ion-title style="text-align: center;" color="primary">
+        Crea tu cuenta
+      </ion-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="loginForm"> 
+      <!-- Nombre -->
+      <ion-item>
+        <ion-input label="Nombre: " label-placement="floating" type="text" placeholder="Ingresa tu nombre" formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="loginForm.get('nombre')?.invalid && loginForm.get('nombre')?.touched">
+        <p>* Nombre es obligatorio</p>
+      </ion-text>
+
+      <!-- Email -->
+      <ion-item>
+        <ion-input label="Email: " label-placement="floating" type="email" placeholder="Ingresa tu email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <p *ngIf="loginForm.get('email')?.hasError('required')">* Email es obligatorio</p>
+        <p *ngIf="loginForm.get('email')?.hasError('email')">* Ingresa un email válido</p>
+      </ion-text>
+
+      <!-- RUT -->
+      <ion-item>
+        <ion-input label="Rut: " label-placement="floating"type="text" placeholder="Ingresa tu RUT" formControlName="rut"></ion-input>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="loginForm.get('rut')?.invalid && loginForm.get('rut')?.touched">
+        <p>* RUT es obligatorio</p>
+      </ion-text>
+
+      <!-- Carrera -->
+      <ion-item>
+        <ion-select label="Carrera: " interface="action-sheet" placeholder="Selecciona tu carrera" formControlName="carrera">
+          <ion-select-option value="Ing. informatica">Ing. en Informática</ion-select-option>
+          <ion-select-option value="Tec. Analista Programador">Tecnico Analista Programador</ion-select-option>
+          <ion-select-option value="Ing. redes">Ing. en Redes</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="loginForm.get('carrera')?.invalid && loginForm.get('carrera')?.touched">
+        <p>* Seleccione Carrera </p>
+      </ion-text>
+
+      <!-- Jornada -->
+      <ion-item>
+        <ion-select label="Jornada: " interface="action-sheet" placeholder="Selecciona tu jornada" formControlName="jornada">
+          <ion-select-option value="Diurno">Diurno</ion-select-option>
+          <ion-select-option value="Vespertino">Vespertino</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="loginForm.get('jornada')?.invalid && loginForm.get('jornada')?.touched">
+        <p>* Seleccione Jornada </p>
+      </ion-text>
+
+      <!-- Sección -->
+      <ion-item>
+        <ion-select label="Seccion: " interface="action-sheet" placeholder="Selecciona tu sección" formControlName="seccion">
+          <ion-select-option value="010d">010d</ion-select-option>
+          <ion-select-option value="010v">010v</ion-select-option>
+          <ion-select-option value="011d">011d</ion-select-option>
+          <ion-select-option value="011v">011v</ion-select-option>
+          <ion-select-option value="012d">012d</ion-select-option>
+          <ion-select-option value="012v">012v</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="loginForm.get('seccion')?.invalid && loginForm.get('seccion')?.touched">
+        <p>* Seleccione Sección </p>
+      </ion-text>
+
+      <!-- Contraseña -->
+      <ion-item>
+        <ion-input label="Contraseña: " label-placement="floating" type="password" placeholder="Crea una contraseña" formControlName="password">
+
+          <ion-input-password-toggle slot="end">
+          </ion-input-password-toggle>
+
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        <p *ngIf="loginForm.get('password')?.hasError('required')">* Contraseña es obligatoria</p>
+        <p *ngIf="loginForm.get('password')?.hasError('minlength')">* Mínimo 8 caracteres</p>
+      </ion-text>
+
+      <!-- Confirmar Contraseña -->
+      <ion-item>
+        <ion-input label="Confirmar Contraseña: " label-placement="floating" type="password" placeholder="Reingresa tu contraseña" formControlName="confpassword">
+
+          <ion-input-password-toggle slot="end">
+          </ion-input-password-toggle></ion-input>
+
+      </ion-item>
+      <ion-text color="danger" *ngIf="loginForm.get('confpassword')?.invalid && loginForm.get('confpassword')?.touched">
+        <p *ngIf="loginForm.get('confpassword')?.hasError('required')">* Contraseña es obligatoria</p>
+      </ion-text>
+      <ion-text color="danger" *ngIf="loginForm.hasError('passwordMismatch') && loginForm.touched">
+        <p>* Las contraseñas no coinciden</p>
+      </ion-text>
+
+      <!-- Botón de Registro -->
+      <ion-button expand="block" color="primary" (click)="crearUsuario()" [disabled]="!loginForm.valid" id="open-loading">
+        Registrarme
+      </ion-button>
+      <ion-loading trigger="open-loading" message="Procesando Registro..." duration="3000"></ion-loading>
+    </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<!-- Footer -->
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title style="font-size: 14px; text-align: center;">IT Event Asistente 2024</ion-title>
+    <ion-buttons slot="end" class="social-icons">
+      <ion-button fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="logo-github"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="logo-linkedin"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

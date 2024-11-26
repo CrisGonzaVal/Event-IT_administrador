@@ -34,4 +34,92 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+  //@import "@ionic/angular/css/palettes/dark.system.css";
+
+
+
+ .logo{
+  
+    width: 130px; /* Define el ancho deseado */
+    height: 100px; /* Define la altura deseada */
+
+ }
+
+ *{
+  font-family: Verdana, sans-serif;
+ }
+
+ ion-title{
+  font-size: 19px;
+ }
+
+
+ :root {
+    // Colores personalizados
+    --ion-color-primary: #004643;
+    --ion-color-secondary: #ABD1C6;
+    --ion-color-tertiary: #F9BC60;
+    --ion-color-danger: #E16162;
+    --ion-color-light: #edf7fa;
+    --ion-color-dark: #004643;
+  
+  
+
+    // Textos
+    --ion-text-color: var(--ion-color-primary);
+  }
+
+  ion-tab-bar {
+    --background: var(--ion-color-light);
+  }
+  
+  ion-tab-button {
+    --color: var(--ion-color-primary);
+    --color-selected: var(--ion-color-tertiary);
+  }
+
+  ion-card {
+    background-color:light;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 3 4px 8px rgba(0, 0, 0, 1);
+    margin: 16px 0;
+  }
+
+  ion-button {
+    border-radius: 24px;  /* Redondear los bordes */
+    display: block;     /* Asegura que el botón ocupe todo el ancho */
+   // width: 100%; 
+  }
+
+  ion-label {
+    font-size: 14px;  /* Ajusta el tamaño de las etiquetas de los formularios */
+  }
+
+  ion-item{
+    font-size: 14px;  /* Ajusta el tamaño de las etiquetas de los formularios */
+  }
+
+/* Ajustar el estilo del ion-input */
+ion-input {
+  font-size: 15px; /* Ajusta el tamaño de la fuente */
+  --padding-start: 0px; /* Elimina el padding adicional */
+  --padding-end: 0px;
+}
+
+
+ion-content {
+  overflow-y:hidden;  /* Deshabilita el scroll vertical */
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Desactiva los cambios basados en el esquema de color */
+  :root {
+    --ion-background-color: #edf7fa;
+    --ion-text-color: #000000;
+  }
+
+} 
+
+  
+
